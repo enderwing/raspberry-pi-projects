@@ -1,0 +1,33 @@
+#!/usr/bin/env python2.7
+
+import RPi.GPIO as GPIO
+import time as t
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+pins_f = [4, 17, 22, 10]
+pins_b = [10, 22, 17, 4]
+
+for pin in pins_f:
+    GPIO.setup(pin, GPIO.OUT)
+
+sleep_time = 0.15
+
+try:
+    while True:
+        for pin in pins_f:
+	    GPIO.output(pin, GPIO.HIGH)
+	    t.sleep(sleep_time)
+        for pin in pins_f:
+	    GPIO.output(pin, GPIO.LOW)
+	    t.sleep(sleep_time)
+        for pin in pins_b:
+	    GPIO.output(pin, GPIO.HIGH)
+	    t.sleep(sleep_time)
+        for pin in pins_b:
+	   GPIO.output(pin, GPIO.LOW)
+    	   t.sleep(sleep_time)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    exit()
