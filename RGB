@@ -1,0 +1,46 @@
+#!/usr/bin/env python2.7
+
+import RPi.GPIO as GPIO
+import time as t
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+R = 5
+G = 6
+B = 13
+
+RGB = [5, 6, 13]
+
+for pins in RGB:
+    GPIO.setup(pins, GPIO.OUT)
+
+try:
+   while True:
+	print("Turn a color (ON) or (OFF)?")
+	onOff = raw_input ("> ").strip().lower()
+	print("Which color: (R)ed, (G)reen or (B)lue.")
+	color = raw_input("> ").strip().lower()
+	if onOff == "on":
+	    if color == "r":
+		GPIO.output(R, GPIO.HIGH)
+	    elif color == "g":
+		GPIO.output(G, GPIO.HIGH)
+	    elif color == "b":
+		GPIO.output(B, GPIO.HIGH)
+	    else:
+		print("Please try again.")
+	elif onOff == "off":
+	    if color == "r":
+		GPIO.output(R, GPIO.LOW)
+	    elif color == "g":
+		GPIO.output(G, GPIO.LOW)
+	    elif color == "b":
+		GPIO.output(B, GPIO.LOW)
+ 	    else:
+		print("Please try again")
+
+except KeyboardInterrupt:
+    print("Bye!")
+    GPIO.cleanup()
+    exit()
