@@ -6,11 +6,11 @@ import time as t
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-R = 5
-G = 6
-B = 13
+R = 4
+G = 22
+B = 10
 
-RGB = [5, 6, 13]
+RGB = [4, 22, 10]
 
 for pins in RGB:
     GPIO.setup(pins, GPIO.OUT)

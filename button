@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+import RPi.GPIO as GPIO
+import time as t
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(26, GPIO.IN)
+
+count = 0
+
+while True:
+    input = GPIO.input(26)
+    if input == True:
+        count += 1
+        print("Pressed: " + str(count) + " times")
+    t.sleep(0.5)

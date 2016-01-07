@@ -7,8 +7,13 @@ import random as r
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-pins = [4, 17, 22, 10]
-for pin in pins:
+light_pins = [4, 17, 22, 10]
+button_pins = [26, 21]
+
+for pin in button_pins:
+    GPIO.setup(pin, GPIO.IN)
+
+for pin in light_pins:
     GPIO.setup(pin, GPIO.OUT)
 
 def l_on(pin):
@@ -18,6 +23,7 @@ def l_off(pin):
     GPIO.output(pin, GPIO.LOW)
 
 colors = ["r", "y", "g", "b"]
+buttons = ["lb", "rb"]
 
 for round in range(1, 1000, 1):
     light_num = round + 1
